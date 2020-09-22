@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #333333;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 70px;
+    background: #FFFFFF;
+    font-size: 16px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+input, button {
+    outline: none;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.esconderTelas{
+    display: none;
+}
+
+::placeholder {
+    font-weight: 300;
+    color: #C7C7C7;
+}

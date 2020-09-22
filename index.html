@@ -5,7 +5,8 @@
         <meta charset= "UTF-8"/>
         <meta name= "viewport" content= "width=width-device, initial-scale=1"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/reset.css"/>
-        <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/geral.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/telaLogin.css"/>
         <link href= "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
         <link href= "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
         <link rel= "icon" type= "image/png" href= "assets/images/logo2.png"/>
@@ -18,18 +19,19 @@
                 <h2> O Quiz que você Quizzer </h2>
             </hgroup>
 
-            <span class= "alertaLogin"> <strong> Preencha todos os campos, por favor !</strong> </span>
+            <span class= "erroLogin" id= "alertaLogin"> <strong> Preencha todos os campos, por favor !</strong> </span>
 
-            <form>
+            <span class= "erroLogin" id= "erroServidor"> <strong> Email ou senha incorretos !</strong> </span>
+            <div>
                 <input id= "inputEmail" type= "email" placeholder= "E-mail" autocomplete= "off" maxlength= "30">
                 <input id= "inputSenha" type= "password" placeholder= "Senha" autocomplete= "off" maxlength= "20">
                 <button onclick= "entrarSite()"> Entrar </button>
-            </form>
+            </div>
         </section>
 
     
     <script src= "https://unpkg.com/axios/dist/axios.min.js"> </script>
     <script src= "https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"> </script>
-    <script src= "assets/javascript/script.js" type= "text/javascript"> </script>
+    <script src= "assets/javascript/telaLogin.js" type= "text/javascript"> </script>
     </body>
 </html>

@@ -1,39 +1,11 @@
 /* ---- TELA LOGIN ---- */
 
-* {
-    box-sizing: border-box;
-}
-
-body {
-    color: #333333;
-    font-weight: 400;
-    font-style: normal;
-    font-family: 'Roboto', sans-serif;
-    padding-top: 70px;
-    background: #FFFFFF;
-    font-size: 16px;
-}
-
-strong {
-    font-weight: 700;
-}
-
-input, button {
-    outline: none;
-    border: none;
-    background: none;
-    font: inherit;
-    color: inherit;
-    padding: 0px;
-    border-radius: 5px;
-}
-
 .telaLogin {
     width: 100vw;
     height: calc(100vh - 80px);
 }
 
-.telaLogin, .telaLogin form, .telaLogin hgroup {
+.telaLogin, .telaLogin div, .telaLogin hgroup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,9 +16,13 @@ input, button {
     font-weight: 100;
 }
 
-.alertaLogin {
+.erroLogin {
     color: #FF6961;
     display: none;
+}
+
+.erroLoginInline {
+    display: inline;
 }
 
 .telaLogin h1 {
@@ -60,7 +36,7 @@ input, button {
     justify-content: space-between;
 }
 
-.telaLogin form {
+.telaLogin div {
     width: 330px;
     height: 215px;
     justify-content: space-around;
@@ -77,7 +53,7 @@ input, button {
     background: #ffffff;
 }
 
-button {
+.telaLogin button {
     cursor: pointer;
     color: #ffffff;
     background: #39385a;
@@ -86,14 +62,13 @@ button {
     font-size: 20px;
 }
 
-::placeholder {
-    font-weight: 300;
-    color: #C7C7C7;
+.telaLogin::placeholder {
     font-size: 20px;
 }
 
+
 @media (max-width: 600px) {
-    .telaLogin form, .telaLogin hgroup {
+    .telaLogin div, .telaLogin hgroup {
         width: calc(100vw - 30px);
     }
 }

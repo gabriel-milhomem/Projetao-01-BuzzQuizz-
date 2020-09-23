@@ -12,8 +12,23 @@ body {
     font-size: 16px;
 }
 
-strong {
+.telaLogin, .telaListaQuizz {
+    width: 100%;
+    height: 100%;
+}
+
+.telaLogin, .telaLogin div, .telaLogin hgroup, .telaListaQuizz li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+strong, h1{
     font-weight: 700;
+}
+
+h1 {
+    font-size: 40px;
 }
 
 input, button {
@@ -33,4 +48,38 @@ input, button {
 ::placeholder {
     font-weight: 300;
     color: #C7C7C7;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background: #6c8fb8;
+    width: 100%;
+    height: 70px;
+    z-index: 1;
+}
+
+header h1 {
+    color: #FFFFFF;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+}
+
+@media(max-width: 600px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    .telaLogin div, .telaLogin hgroup {
+        width: calc(100vw - 30px);
+    }
 }

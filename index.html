@@ -5,9 +5,10 @@
         <meta charset= "UTF-8"/>
         <meta name= "viewport" content= "width=width-device, initial-scale=1"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/reset.css"/>
-        <link rel= "stylesheet" type= "text/css" href= "assets/css/geral.css"/>
-        <link rel= "stylesheet" type= "text/css" href= "assets/css/telaLogin.css"/>
+        <!--<link rel= "stylesheet" type= "text/css" href= "assets/css/telaLogin.css"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/listaQuizz.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/criacaoQuizz.css"/>-->
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/geral.css"/>
         <link href= "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
         <link href= "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
         <link rel= "icon" type= "image/png" href= "assets/images/logo2.png"/>
@@ -20,7 +21,7 @@
             <img class= "logo" src= "assets/images/logo.jpg" alt= "Logo do BuzzQuizz" title= "BuzzQuizz"/>
         </header>
 
-        <section class= "esconderTelas">
+        <section id= "telaCadastro" class= "telaLogin">
             <hgroup>
                 <h1> BuzzQuizz </h1>
                 <h2> O Quiz que você Quizzer </h2>
@@ -36,19 +37,34 @@
             </div>
         </section>
 
-        <section class= "telaListaQuizz">
+        <section id= "bibliotecaQuizz" class= "esconderTela">
             <ul id= "listaDeQuizz">
-                <li class= "adicionarQuizz"> 
-                    <p>Novo<br/>Quizz </p>
-                    <button> <ion-icon name= "add-circle"> </ion-icon> </button>
-                </li>
+
             </ul>
         </section>
+
+        <section id= "construirQuizz" class= "esconderTela">
+
+            <input id= "inputTitulo" type= "text" placeholder= "Digite o título do seu quizz" autocomplete= "off" maxlength= "50"/>
+            
+            <ul id= "listaDePerguntas">
+
+            </ul>
+
+            <ul id= "listaDeNiveis">
+
+            </ul>
+
+            <button onclick= "publicarQuizz()" class= "botaoPublicar"> Publicar </button>
+
+        </section>
+
 
     
     <script src= "https://unpkg.com/axios/dist/axios.min.js"> </script>
     <script src= "https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"> </script>
     <script src= "assets/javascript/telaLogin.js" type= "text/javascript"> </script>
     <script src= "assets/javascript/listaQuizz.js" type= "text/javascript"> </script>
+    <script src= "assets/javascript/criacaoQuizz.js" type= "text/javascript"> </script>
     </body>
 </html>

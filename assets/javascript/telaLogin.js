@@ -1,5 +1,9 @@
 var botaoEnviar = document.querySelector(".telaLogin button");
 var token;
+var telaLogin;
+var listaQuizz;
+var telaCriacao;
+var cabecalho;
 
 function entrarSite() {
     var emailUsuario = document.querySelector("#inputEmail").value;
@@ -39,8 +43,13 @@ function emailSenhaIncorreto() {
 }
 
 function iniciarListagemQuizz(resposta) {
-    var telaLogin = document.querySelector(".telaLogin");
+    telaLogin = document.querySelector("#telaCadastro");
+    listaQuizz = document.querySelector("#bibliotecaQuizz");
+    cabecalho = document.querySelector("header");
+    cabecalho.classList.add("aparecerHeader");
     telaLogin.classList.remove("telaLogin");
-    telaLogin.classList.add("esconderTelas");
+    telaLogin.classList.add("esconderTela");
+    listaQuizz.classList.remove("esconderTela");
+    listaQuizz.classList.add("telaListaQuizz");
     token = resposta.data.token;
 }

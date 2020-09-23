@@ -1,27 +1,29 @@
+/* --------------------- GERAL ------------------- */
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    color: #333333;
+    color: #AAAAAA;
     font-weight: 400;
     font-style: normal;
     font-family: 'Roboto', sans-serif;
     padding-top: 70px;
-    background: #FFFFFF;
-    font-size: 16px;
+    background: #ffffff;
 }
 
-.telaLogin, .telaListaQuizz {
+.telaLogin, .telaListaQuizz, .telaCriacaoQuizz {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 80px);
 }
 
-.telaLogin, .telaLogin div, .telaLogin hgroup, .telaListaQuizz li {
+.telaLogin div, .telaLogin hgroup, .telaListaQuizz li, .telaCriacaoQuizz li, .telaCriacaoQuizz, .telaLogin {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 strong, h1{
     font-weight: 700;
@@ -31,41 +33,75 @@ h1 {
     font-size: 40px;
 }
 
-input, button {
+ion-icon {
+    font-size: 50px;
+}
+
+.fundoVerde {
+    background: #90ee90;
+    color: #f6f6f6;
+}
+
+.fundoVerm {
+    background: #fe7171;
+    color: #f6f6f6;
+}
+
+.fundoVerm::placeholder {
+    color: #f6f6f6;
+}
+
+input, button, textarea{
     outline: none;
     border: none;
     background: none;
     font: inherit;
     color: inherit;
     padding: 0px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-.esconderTelas{
+input {
+    padding-left: 10px;
+    background: #f6f6f6;
+    width: 100%;
+    height: 35px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.esconderTela {
     display: none;
 }
 
 ::placeholder {
-    font-weight: 300;
-    color: #C7C7C7;
+    color: #aaaaaa;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.aparecerHeader {
+    display: flex;
 }
 
 header {
     position: fixed;
     top: 0px;
     right: 0px;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
-    background: #6c8fb8;
+    background: #ffc7c7;
     width: 100%;
     height: 70px;
     z-index: 1;
 }
 
 header h1 {
-    color: #FFFFFF;
+    color: #f6f6f6;
 }
 
 .logo {
@@ -74,12 +110,202 @@ header h1 {
     border-radius: 100px;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     header h1 {
         font-size: 32px;
     }
+}
+
+/* -------------------- Tela Login --------------------*/
+
+.telaLogin h2 {
+    font-size: 28px;
+    font-weight: 100;
+}
+
+.erroLogin {
+    color: #fe7171;
+    display: none;
+}
+
+.erroLoginInline {
+    display: inline;
+}
+
+.telaLogin hgroup {
+    margin-bottom: 30px;
+    height: 70px;
+    justify-content: space-between;
+}
+
+.telaLogin div {
+    width: 330px;
+    height: 215px;
+    justify-content: space-around;
+    padding: 15px;
+    background: #ffc7c7;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.telaLogin input, #inputTitulo {
+    height: 50px;
+}
+
+.telaLogin button, .botaoPublicar {
+    color: #f6f6f6;
+    background: #fe7171;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.telaLogin::placeholder, #inputTitulo::placeholder, h2 {
+    font-size: 20px;
+}
+
+@media (max-width: 600px) {
 
     .telaLogin div, .telaLogin hgroup {
         width: calc(100vw - 30px);
     }
+}
+
+/* ---------------------- listaQuizz --------------------- */
+
+.telaListaQuizz {
+    display: flex;
+    justify-content: center;
+}
+
+.telaListaQuizz ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100vw - 300px);
+    margin-top: 70px;
+}
+
+.telaListaQuizz li {
+    width: 182px;
+    height: 200px;
+    padding: 0px 30px 15px 30px;
+    justify-content: center;
+    margin: 0px 20px 20px 0px;
+    border: 1ps solid #aaaaaa;
+    box-shadow: 0px 0px 3px #aaaaaa;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.2;
+    cursor: pointer;
+    background: #f6f6f6;
+}
+
+.telaListaQuizz li:nth-child(5n) {
+    margin-right: 0px;
+}
+
+.telaListaQuizz .adicionarQuizz {
+    padding-top: 15px;
+    justify-content: space-evenly;
+    color: #f6f6f6;
+    font-size: 26px;
+    font-weight: 700;
+    background:#ffc7c7;
+    border: none;
+}
+
+.telaListaQuizz p {
+    letter-spacing: -0.5px;
+    width: 100%;
+    word-break: break-word;
+}
+
+.adicionarQuizz ion-icon {
+    color: #f6f6f6;
+}
+
+@media (max-width: 600px) {
+
+    .telaListaQuizz ul {
+        width: calc(100% - 30px);
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .telaListaQuizz li {
+        margin-right: 0px;
+        margin-bottom: 30px;
+        width: 220px;
+        height: 260px;
+    }
+
+    .telaListaQuizz .adicionarQuizz {
+        padding: 30px;
+    }
+}
+
+/* ----------------------- criacaoQuizz ---------------------------*/
+
+#inputTitulo {
+    margin: 0px 0px 20px 0px;
+    border: 1px solid #ffc7c7;
+    padding-left: 20px;
+    font-size: 20px;
+ }
+
+.telaCriacaoQuizz {
+    padding-top: 60px;
+}
+ 
+.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar {
+    width: calc(100vw - 500px);
+}
+
+#listaDePerguntas .inputPergunta {
+    width: 100%;
+}
+
+.telaCriacaoQuizz ul, .botaoPublicar{
+    margin-bottom: 60px;
+}
+
+.telaCriacaoQuizz form {
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffc7c7;
+    padding: 15px 20px;
+    width: 100%;
+    border-radius: 10px;
+    height: 280px;
+    margin-bottom: 15px;
+    justify-content: space-between;
+ }
+
+ #listaDePerguntas form input, .larguraMetade {
+    width: 49.5%;
+    font-size: 16px;
+ }
+
+ .telaCriacaoQuizz li {
+    justify-content: space-between;
+    margin-bottom: 20px;
+ }
+
+ .telaCriacaoQuizz h2 {
+    align-self: flex-start;
+    width: 100%;
+    color: #ffffff;
+    font-weight: 700;
+ }
+
+.telaCriacaoQuizz ion-icon {
+    color: #ffc7c7;
+}
+
+.caixaMaior {
+    height: 80px;
+    width: 100%;
+    background: #f6f6f6;
+    padding: 10px;
 }

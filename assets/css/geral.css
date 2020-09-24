@@ -13,12 +13,12 @@ body {
     background: #f8efd4;
 }
 
-.telaLogin, .telaListaQuizz, .telaCriacaoQuizz {
+.telaLogin, .telaListaQuizz, .telaCriacaoQuizz, .telaJogo {
     width: 100%;
     height: calc(100% - 80px);
 }
 
-.telaLogin div, .telaLogin hgroup, .telaListaQuizz li, .telaCriacaoQuizz li, .telaCriacaoQuizz, .telaLogin {
+.telaLogin div, .telaLogin hgroup, .telaListaQuizz li, .telaCriacaoQuizz li, .telaCriacaoQuizz, .telaLogin, .telaJogo{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,9 +173,10 @@ header h1 {
 
 /* ---------------------- listaQuizz --------------------- */
 
-.telaListaQuizz {
+.telaListaQuizz, article div {
     display: flex;
     justify-content: center;
+    align-items: center; /* verificar */
 }
 
 .telaListaQuizz ul {
@@ -259,7 +260,7 @@ header h1 {
     padding-top: 50px;
 }
  
-.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar {
+.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar, article, .telaJogo h1 {
     width: calc(100vw - 500px);
 }
 
@@ -337,5 +338,104 @@ header h1 {
     
     #listaDePerguntas form input, .larguraMetade {
         width: 100%;
+    }
+}
+
+/* ----------- Tela Jogo ------------ */
+
+.telaJogo h1 {
+    border-radius: 15px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    border: 1px solid #ffc7c7;
+    padding: 10px;
+    line-height: 1.25;
+    padding-left: 15px;
+    margin-top: 60px;
+    letter-spacing: -1px;
+    word-break: break-all;
+}
+
+article div {
+    padding: 40px;
+    width: 100%;
+    background: #ffc7c7;
+    word-break: break-all;
+    margin-bottom: 30px;
+}
+
+article {
+    font-size: 28px;
+    font-family: 'Merriweather', serif;
+}
+
+.telaJogo h2 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.telaJogo ul {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+
+.telaJogo li {
+    background: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ffc7c7;
+    cursor: pointer;
+}
+
+.telaJogo figure {
+    height: 192px;
+    width: 385px;
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+}
+
+.telaJogo figcaption {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    border-top: 1px solid #ffc7c7; 
+}
+
+@media (max-width: 600px) {
+    article, .telaJogo h1, .telaJogo ul, .telaJogo figure, .telaJogo{
+        width: 100%;
+    }
+
+    .telaJogo h1 {
+        margin-top: 30px;
+        padding: 5px;
+        line-height: 1;
+        font-size: 28px;
+    }
+
+    .telaJogo ul {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .telaJogo figcaption {
+        font-size: 25px;
+        height: 50px
+    }
+
+    article div {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .telaJogo {
+        padding: 0px 15px;
     }
 }

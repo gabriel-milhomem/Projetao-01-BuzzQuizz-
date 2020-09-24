@@ -27,7 +27,7 @@ function criarNivel() {
     ulNivel = document.querySelector("#listaDeNiveis");
     var novoLi = document.createElement("li");
     var formLi = document.createElement("form");
-    formLi.innerHTML = "<form> <h2> Nivel " + qntsNiveis + "</h2>"; 
+    formLi.innerHTML =  " <h2> Nivel " + qntsNiveis + "</h2>"; 
     formLi.innerHTML += "<input class= 'larguraMetade' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
     formLi.innerHTML += "<input class= 'larguraMetade' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Título do nível'/>";

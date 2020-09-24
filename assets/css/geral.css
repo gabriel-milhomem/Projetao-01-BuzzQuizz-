@@ -14,7 +14,7 @@ body {
 }
 
 .telaLogin, .telaListaQuizz, .telaCriacaoQuizz {
-    width: 100%;
+    width: 100vw;
     height: calc(100% - 80px);
 }
 
@@ -39,16 +39,16 @@ ion-icon {
 
 .fundoVerde {
     background: #90ee90;
-    color: #f6f6f6;
+    color: #ffffff;
 }
 
 .fundoVerm {
     background: #fe7171;
-    color: #f6f6f6;
+    color: #ffffff;
 }
 
-.fundoVerm::placeholder {
-    color: #f6f6f6;
+.fundoVerm::placeholder, .fundoVerde::placeholder {
+    color: #ffffff;
 }
 
 input, button, textarea{
@@ -63,7 +63,7 @@ input, button, textarea{
 
 input {
     padding-left: 10px;
-    background: #f6f6f6;
+    background: #ffffff;
     width: 100%;
     height: 35px;
 }
@@ -101,7 +101,7 @@ header {
 }
 
 header h1 {
-    color: #f6f6f6;
+    color: #ffffff;
 }
 
 .logo {
@@ -117,6 +117,10 @@ header h1 {
 }
 
 /* -------------------- Tela Login --------------------*/
+
+.telaLogin {
+    padding-top: 40px;
+}
 
 .telaLogin h2 {
     font-size: 28px;
@@ -153,7 +157,7 @@ header h1 {
 }
 
 .telaLogin button, .botaoPublicar {
-    color: #f6f6f6;
+    color: #ffffff;
     background: #fe7171;
     width: 120px;
     height: 50px;
@@ -191,8 +195,8 @@ header h1 {
     padding: 0px 30px 15px 30px;
     justify-content: center;
     margin: 0px 20px 20px 0px;
-    border: 1ps solid #aaaaaa;
-    box-shadow: 0px 0px 3px #aaaaaa;
+    border: 1px solid #aaaaaa;
+    box-shadow: 0px 0px 3px rgba(0 , 0, 0, 0.3);
     border-radius: 15px;
     text-align: center;
     font-size: 20px;
@@ -208,11 +212,12 @@ header h1 {
 .telaListaQuizz .adicionarQuizz {
     padding-top: 15px;
     justify-content: space-evenly;
-    color: #f6f6f6;
+    color: #ffffff;
     font-size: 26px;
     font-weight: 700;
     background:#ffc7c7;
-    border: none;
+    border: 1px solid #fe7171;
+    box-shadow: none;
 }
 
 .telaListaQuizz p {
@@ -222,7 +227,7 @@ header h1 {
 }
 
 .adicionarQuizz ion-icon {
-    color: #f6f6f6;
+    color: #ffffff;
 }
 
 @media (max-width: 600px) {
@@ -306,6 +311,37 @@ header h1 {
 .caixaMaior {
     height: 80px;
     width: 100%;
-    background: #f6f6f6;
+    background: #ffffff;
     padding: 10px;
+}
+
+@media (max-width: 600px) {
+    .telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar {
+        width: calc(100% - 30px);
+    }
+
+    .telaCriacaoQuizz form {
+        padding: 10px 10px 0px 10px;
+        height: auto;
+    }
+
+    .telaCriacaoQuizz ul {
+        margin-bottom: 40px;
+    }
+
+    .telaCriacaoQuizz {
+        padding-top: 40px;
+    }
+
+    .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea {
+        margin-bottom: 10px;
+    }
+    
+    #listaDePerguntas form input {
+        width: 100%;
+    }
+
+    .larguraMetade {
+        width: 100%;
+    }
 }

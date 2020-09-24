@@ -52,4 +52,5 @@ function iniciarListagemQuizz(resposta) {
     listaQuizz.classList.remove("esconderTela");
     listaQuizz.classList.add("telaListaQuizz");
     token = resposta.data.token;
+    pegarListasServidor();
 }

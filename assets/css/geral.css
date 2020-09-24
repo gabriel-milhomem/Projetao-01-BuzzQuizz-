@@ -10,7 +10,7 @@ body {
     font-style: normal;
     font-family: 'Roboto', sans-serif;
     padding-top: 70px;
-    background: #ffffff;
+    background: #f8efd4;
 }
 
 .telaLogin, .telaListaQuizz, .telaCriacaoQuizz {
@@ -119,12 +119,12 @@ header h1 {
 /* -------------------- Tela Login --------------------*/
 
 .telaLogin {
-    padding-top: 40px;
+    padding: 20px;
 }
 
 .telaLogin h2 {
     font-size: 28px;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .erroLogin {

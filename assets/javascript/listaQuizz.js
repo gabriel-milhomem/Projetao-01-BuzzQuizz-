@@ -1,7 +1,12 @@
+function pegarListasServidor() {
+    var config = { headers: {"User-Token": token} };
+    var requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", config);
+    requisicao.then(renderizarListaQuizz);
+}
 
-var listaQuizz = [{title: "QUAO BOM VC É SOBRE GLOBO"}, {title: "QUAO BOM VC É SOBRE BOZONARO"}, {title: "QUAO BOM VC É SOBRE HARRY POTTER"}, {title: "COZINHA"}, {title: "LEGUE OF LEGENDS"}, {title: "PNEUMOUTRAPICONIOTICO"}];
-renderizarListaQuizz();
-function renderizarListaQuizz() {
+function renderizarListaQuizz(resposta) {
+    console.log(resposta.data);
+    var listaQuizz = resposta.data;
     var ul = document.querySelector("#listaDeQuizz");
     ul.innerHTML= "";
     for(var i = -1; i < listaQuizz.length; i++) {

@@ -1,14 +1,16 @@
-var botaoEnviar = document.querySelector(".telaLogin button");
+var botaoEnviar; 
 var token;
+var cabecalho;
 var telaLogin;
 var listaQuizz;
-var telaCriacao;
-var cabecalho;
 
 function entrarSite() {
+    botaoEnviar = document.querySelector(".telaLogin button");
     var emailUsuario = document.querySelector("#inputEmail").value;
     var senhaUsuario = document.querySelector("#inputSenha").value;
+    var cadastro = {email: emailUsuario, password: senhaUsuario};
     var campoEmBranco = emailUsuario === "" || senhaUsuario === "";
+    var reqLogin;
 
     if(campoEmBranco) {
         alertaCampoEmBranco(true);
@@ -17,8 +19,7 @@ function entrarSite() {
     else {
         alertaCampoEmBranco(false);
         botaoEnviar.disabled = true;
-        var cadastro = {email: emailUsuario, password: senhaUsuario};
-        var reqLogin = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/users", cadastro);
+        reqLogin = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/users", cadastro);
         reqLogin.then(iniciarListagemQuizz).catch(emailSenhaIncorreto);
     }
 
@@ -26,6 +27,7 @@ function entrarSite() {
 
 function alertaCampoEmBranco(existeErro) {
     var alertaLogin = document.querySelector("#alertaLogin");
+
     if(existeErro) {
         alertaLogin.classList.add("erroLoginInline");
     }
@@ -38,19 +40,25 @@ function alertaCampoEmBranco(existeErro) {
 
 function emailSenhaIncorreto() {
     var erroServidor = document.querySelector("#erroServidor");
+
     erroServidor.classList.add("erroLoginInline");
     botaoEnviar.disabled = false;
 }
 
 function iniciarListagemQuizz(resposta) {
+    token = resposta.data.token;
     telaLogin = document.querySelector("#telaCadastro");
     listaQuizz = document.querySelector("#bibliotecaQuizz");
     cabecalho = document.querySelector("header");
+
     cabecalho.classList.add("aparecerHeader");
-    telaLogin.classList.remove("telaLogin");
-    telaLogin.classList.add("esconderTela");
-    listaQuizz.classList.remove("esconderTela");
-    listaQuizz.classList.add("telaListaQuizz");
-    token = resposta.data.token;
+    transicaoDeTela(telaLogin, "telaLogin", listaQuizz, "telaListaQuizz");
     pegarListasServidor();
+}
+
+function transicaoDeTela(telaAgora, telaAgoraClass, proximaTela, proximaTelaClasse) {
+    telaAgora.classList.remove(telaAgoraClass);
+    telaAgora.classList.add("esconderTela");
+    proximaTela.classList.remove("esconderTela");
+    proximaTela.classList.add(proximaTelaClasse);
 }

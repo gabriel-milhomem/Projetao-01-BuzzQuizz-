@@ -14,7 +14,7 @@ body {
 }
 
 .telaLogin, .telaListaQuizz, .telaCriacaoQuizz {
-    width: 100vw;
+    width: 100%;
     height: calc(100% - 80px);
 }
 
@@ -136,6 +136,11 @@ header h1 {
     display: inline;
 }
 
+.erroForm {
+    color: #fe7171;
+    display: inline;
+}
+
 .telaLogin hgroup {
     margin-bottom: 30px;
     height: 70px;
@@ -164,7 +169,7 @@ header h1 {
     font-size: 20px;
 }
 
-.telaLogin::placeholder, #inputTitulo::placeholder, h2 {
+.telaLogin::placeholder, #inputTitulo::placeholder {
     font-size: 20px;
 }
 
@@ -253,14 +258,14 @@ header h1 {
 /* ----------------------- criacaoQuizz ---------------------------*/
 
 #inputTitulo {
-    margin: 0px 0px 20px 0px;
+    margin: 15px 0px 20px 0px;
     border: 1px solid #ffc7c7;
     padding-left: 20px;
     font-size: 20px;
  }
 
 .telaCriacaoQuizz {
-    padding-top: 60px;
+    padding-top: 50px;
 }
  
 .telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar {
@@ -302,6 +307,7 @@ header h1 {
     width: 100%;
     color: #ffffff;
     font-weight: 700;
+    font-size: 24px;
  }
 
 .telaCriacaoQuizz ion-icon {
@@ -330,7 +336,7 @@ header h1 {
     }
 
     .telaCriacaoQuizz {
-        padding-top: 40px;
+        padding-top: 30px;
     }
 
     .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea {

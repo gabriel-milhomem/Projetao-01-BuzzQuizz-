@@ -1,3 +1,5 @@
+var telaCriacao;
+
 function pegarListasServidor() {
     var config = { headers: {"User-Token": token} };
     var requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", config);
@@ -5,33 +7,36 @@ function pegarListasServidor() {
 }
 
 function renderizarListaQuizz(resposta) {
-    console.log(resposta.data);
-    var listaQuizz = resposta.data;
+    var listaServidor = resposta.data;
     var ul = document.querySelector("#listaDeQuizz");
+
+    console.log(listaServidor);
     ul.innerHTML= "";
-    for(var i = -1; i < listaQuizz.length; i++) {
+    for(var i = -1; i < listaServidor.length; i++) {
         var novoLi = document.createElement("li");
+        var titulo = listaServidor[i].title;
+
         if(i == -1) {
-            novoLi.classList.add("adicionarQuizz");
-            novoLi.setAttribute("onclick", "iniciarCriacaoDeQuizz()");
-            novoLi.innerHTML = "<p> Novo <br/> Quizz </p>";
-            novoLi.innerHTML += "<ion-icon name= 'add-circle'> </ion-icon>";
-            ul.appendChild(novoLi);
+            caixaNovoQuizz(novoLi);
             continue;
         }
-
-        var titulo = listaQuizz[i].title;
+        
+        novoLi.setAttribute("onclick", "iniciarJogo()");
         novoLi.innerHTML = "<p>" + titulo + "</p>";
         ul.appendChild(novoLi);
     }
 }
+function caixaNovoQuizz(li) {
+    li.classList.add("adicionarQuizz");
+    li.setAttribute("onclick", "iniciarCriacaoDeQuizz()");
+    li.innerHTML = "<p> Novo <br/> Quizz </p>";
+    li.innerHTML += "<ion-icon name= 'add-circle'> </ion-icon>";
+    ul.appendChild(li);
+}
 
-function iniciarCriacaoDeQuizz() {
-    listaQuizz.classList.remove("telaListaQuizz");
-    listaQuizz.classList.add("esconderTela");
+function iniciarCriacaoDeQuizz() {;
     telaCriacao = document.querySelector("#construirQuizz");
-    telaCriacao.classList.remove("esconderTela");
-    telaCriacao.classList.add("telaCriacaoQuizz");
+    transicaoDeTela(listaQuizz, "telaListaQuizz", telaCriacao, "telaCriacaoQuizz");
     criarPergunta();
     criarNivel();
 }

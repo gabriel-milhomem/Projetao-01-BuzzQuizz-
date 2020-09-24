@@ -127,16 +127,7 @@ header h1 {
     font-weight: 300;
 }
 
-.erroLogin {
-    color: #fe7171;
-    display: none;
-}
-
-.erroLoginInline {
-    display: inline;
-}
-
-.erroForm {
+.erroMensagem {
     color: #fe7171;
     display: inline;
 }
@@ -300,6 +291,7 @@ header h1 {
  .telaCriacaoQuizz li {
     justify-content: space-between;
     margin-bottom: 20px;
+    padding: 5px 0px;
  }
 
  .telaCriacaoQuizz h2 {
@@ -327,7 +319,7 @@ header h1 {
     }
 
     .telaCriacaoQuizz form {
-        padding: 10px 10px 0px 10px;
+        padding: 20px 10px 10px 10px;
         height: auto;
     }
 
@@ -343,11 +335,7 @@ header h1 {
         margin-bottom: 10px;
     }
     
-    #listaDePerguntas form input {
-        width: 100%;
-    }
-
-    .larguraMetade {
+    #listaDePerguntas form input, .larguraMetade {
         width: 100%;
     }
 }

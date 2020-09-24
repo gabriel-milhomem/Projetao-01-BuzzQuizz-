@@ -27,8 +27,7 @@
                 <h2> O Quiz que você Quizzer </h2>
             </hgroup>
 
-            <span class= "erroLogin" id= "alertaLogin"> <strong> Preencha todos os campos, por favor !</strong> </span>
-            <span class= "erroLogin" id= "erroServidor"> <strong> Email ou senha incorretos !</strong> </span>
+            <span class= "erroMensagem" id= "erroLogin"> </span>
 
             <div>
                 <input id= "inputEmail" type= "email" placeholder= "E-mail" autocomplete= "off" maxlength= "30"/>
@@ -44,6 +43,8 @@
         </section>
 
         <section id= "construirQuizz" class= "esconderTela">
+
+            <span class= "erroMensagem" id= "erroForm"> </span>
 
             <input id= "inputTitulo" type= "text" placeholder= "Digite o título do seu quizz" autocomplete= "off" maxlength= "50"/>
             

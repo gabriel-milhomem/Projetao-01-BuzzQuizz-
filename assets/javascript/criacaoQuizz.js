@@ -2,7 +2,6 @@ var ulPergunta;
 var ulNivel;
 var qntsPerguntas = 0;
 var qntsNiveis = 0;
-var erroMensagem = null;
 
 function criarPergunta() {
     var novoLi = document.createElement("li");
@@ -29,63 +28,105 @@ function criarNivel() {
 }
 
 function publicarQuizz() {
-    validarFormulario();
-    criarObjetoPost();
+    var estaValidado = validarFormulario();
+    console.log(estaValidado);
+    if(estaValidado) {
+        criarObjetoPost()
+        qntsPerguntas = 0;
+        qntsNiveis = 0;
+        ulNivel.innerHTML= "";
+        ulPergunta.innerHTML= "";
+        resetarInputs();
+        transicaoDeTela(telaCriacao, "telaCriacaoQuizz", listaQuizz, "telaListaQuizz");
+    }
     
-    erroMensagem.remove();
-    qntsPerguntas = 0;
-    qntsNiveis = 0;
-    ulNivel.innerHTML= "";
-    ulPergunta.innerHTML= "";
 
-    transicaoDeTela(telaCriacao, "telaCriacaoQuizz", listaQuizz, "telaListaQuizz");
 }
 
 function validarFormulario() {
     var todosInputs = document.querySelectorAll("#construirQuizz input");
     var perguntas = document.querySelectorAll(".inputPergunta");
+    var textArea = document.querySelector("textarea");
+    var naoTemErro;
 
-    espacosCapitalize(todosInputs)
-    validarInterrogacao(perguntas);
+    espacosInput(todosInputs, textArea);
+    naoTemErro = temInputVazio(todosInputs, textArea);
+
+    if(!naoTemErro) {
+        console.log("AAAAAAA");
+        return naoTemErro;
+    }
+
+    capitalizeInput(todosInputs, textArea);
+    naoTemErro = validarInterrogacao(perguntas);
+
+    return naoTemErro;
 }
 
-function espacosCapitalize(todosInputs) {
+function espacosInput(todosInputs, textArea) {
     for(var i = 0; i < todosInputs.length; i++) {
-        var texto = todosInputs[i].value.trim()
+        todosInputs[i].value = todosInputs[i].value.trim()
+        textArea.value = textArea.value.trim();
+    }
+}
+
+function temInputVazio(todosInputs, textArea) {
+    var alertaForm = document.querySelector("#erroForm");
+    
+    if(textArea.value.length === 0) {
+        var alerta = "Preencha todos os campos, por favor !";
+        renderizarErro(alerta, alertaForm);
+        return false;
+    }
+
+    for(var i = 0; i < todosInputs.length; i++) {
+        if(todosInputs[i].value.length === 0) {
+            var alerta = "Preencha todos os campos, por favor !";
+            renderizarErro(alerta, alertaForm);
+            return false;
+        }
+    }
+
+    return true;
+
+}
+
+function capitalizeInput(todosInputs, textArea) {
+    textArea.value = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1);
+
+    for(var i = 0; i < todosInputs.length; i++) {
+        var texto = todosInputs[i].value;
         todosInputs[i].value = texto.charAt(0).toUpperCase() + texto.slice(1);
     }
 }
 
 function validarInterrogacao(perguntas) {
+    var alertaForm = document.querySelector("#erroForm");
+
     for(var i = 0; i < perguntas.length; i++) {
-        var texto = pergunta[i].value
+        var texto = perguntas[i].value
         if(texto.indexOf("?") === -1) {
-            var alerta = "Corrija os dados: coloque '?' na pergunta";
-            erroForm(alerta);
-            break;
+            var alerta = "Corrija os dados: coloque '?' na pergunta !";
+            renderizarErro(alerta, alertaForm);
+            return false;
         }
 
         else {
-            if(texto.indexOf("?") !== texto.lenght - 1) {
-                var alerta = "Corrija os dados: '?' no fim da pergunta";
-                erroForm(alerta);
-                break;
+            
+            console.log(texto.indexOf("?"));
+            
+            if(texto.indexOf("?") !== texto.length - 1) {
+                console.log("aaaaaaaaaaaa");
+
+                var alerta = "Corrija os dados: coloque ' ? ' no fim da pergunta !";
+                renderizarErro(alerta, alertaForm);
+                return false;
             }
         }
 
     }
-}
 
-function erroForm(alerta) {
-    if(erroMensagem !== null) {
-        erroMensagem.remove();
-    }
-
-    erroMensagem = document.createElement("span");
-    var ondeColocar = document.querySelector("#construirQuizz");
-    erroMensagem.classList.add("erroForm");
-    erroMensagem.innerHTML = "<span> " + alerta + "</span>";
-    ondeColocar.appendChild(erroMensagem);
+    return true;
 }
 
 function criarObjetoPost() {
@@ -158,6 +199,15 @@ function enviarObjetoPost(objeto) {
     var config = {headers: {"User-Token": token} };
     var requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", objeto, config);
     requisicao.then(pegarListasServidor);
+}
+
+function resetarInputs() {
+    var alertaForm = document.querySelector("#erroForm");
+    alertaForm.innerHTML = "";
+    var todosInputs = document.querySelectorAll("#construirQuizz input");
+    for(var i = 0; i < todosInputs.length; i++) {
+        todosInputs[i].value = "";
+    }
 }
 
 

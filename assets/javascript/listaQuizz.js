@@ -14,19 +14,19 @@ function renderizarListaQuizz(resposta) {
     ul.innerHTML= "";
     for(var i = -1; i < listaServidor.length; i++) {
         var novoLi = document.createElement("li");
-        var titulo = listaServidor[i].title;
 
         if(i == -1) {
-            caixaNovoQuizz(novoLi);
+            caixaNovoQuizz(novoLi, ul);
             continue;
         }
-        
+
+        var titulo = listaServidor[i].title;
         novoLi.setAttribute("onclick", "iniciarJogo()");
         novoLi.innerHTML = "<p>" + titulo + "</p>";
         ul.appendChild(novoLi);
     }
 }
-function caixaNovoQuizz(li) {
+function caixaNovoQuizz(li, ul) {
     li.classList.add("adicionarQuizz");
     li.setAttribute("onclick", "iniciarCriacaoDeQuizz()");
     li.innerHTML = "<p> Novo <br/> Quizz </p>";

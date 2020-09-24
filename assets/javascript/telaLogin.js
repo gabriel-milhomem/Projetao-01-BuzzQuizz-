@@ -5,7 +5,7 @@ var telaLogin;
 var listaQuizz;
 
 function entrarSite() {
-    botaoEnviar = document.querySelector(".telaLogin button");
+    botaoEnviar = document.querySelector("#telaCadastro button");
     var emailUsuario = document.querySelector("#inputEmail").value;
     var senhaUsuario = document.querySelector("#inputSenha").value;
     var cadastro = {email: emailUsuario, password: senhaUsuario};
@@ -13,11 +13,10 @@ function entrarSite() {
     var reqLogin;
 
     if(campoEmBranco) {
-        alertaCampoEmBranco(true);
+        alertasLogin(true);
     }
     
     else {
-        alertaCampoEmBranco(false);
         botaoEnviar.disabled = true;
         reqLogin = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/users", cadastro);
         reqLogin.then(iniciarListagemQuizz).catch(emailSenhaIncorreto);
@@ -25,23 +24,26 @@ function entrarSite() {
 
 }
 
-function alertaCampoEmBranco(existeErro) {
-    var alertaLogin = document.querySelector("#alertaLogin");
+function alertasLogin(tipoDeErro) {
+    var alertaLogin = document.querySelector("#erroLogin");
 
-    if(existeErro) {
-        alertaLogin.classList.add("erroLoginInline");
+    if(tipoDeErro) {
+        var alerta = "Preencha todos os campos, por favor !";
+        renderizarErro(alerta, alertaLogin);
     }
 
     else {
-        alertaLogin.classList.remove("erroLoginInline");
+        var alerta = "Email ou senha incorretos !";
+        renderizarErro(alerta, alertaLogin);
     }
-    
+}
+
+function renderizarErro(alerta, ondeColocar) {
+    ondeColocar.innerHTML = "<strong>" + alerta + "</strong>";
 }
 
 function emailSenhaIncorreto() {
-    var erroServidor = document.querySelector("#erroServidor");
-
-    erroServidor.classList.add("erroLoginInline");
+    alertasLogin(false);
     botaoEnviar.disabled = false;
 }
 

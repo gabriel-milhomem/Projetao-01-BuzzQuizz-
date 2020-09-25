@@ -11,7 +11,6 @@ function renderizarListaQuizz(resposta) {
     listaServidor = resposta.data;
     var ul = document.querySelector("#listaDeQuizz");
 
-    console.log(listaServidor);
     ul.innerHTML= "";
     for(var i = -1; i < listaServidor.length; i++) {
         var novoLi = document.createElement("li");

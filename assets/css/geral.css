@@ -125,6 +125,7 @@ header h1 {
 .telaLogin h2 {
     font-size: 28px;
     font-weight: 300;
+    letter-spacing: -0.5px;
 }
 
 .erroMensagem {
@@ -176,13 +177,12 @@ header h1 {
 .telaListaQuizz, article .cabecalhoArticle {
     display: flex;
     justify-content: center;
-    align-items: center; /* verificar */
 }
 
 .telaListaQuizz ul {
     display: flex;
     flex-wrap: wrap;
-    width: calc(100vw - 300px);
+    width: calc(100vw - 380px);
     margin-top: 70px;
 }
 
@@ -202,7 +202,7 @@ header h1 {
     background: #f6f6f6;
 }
 
-.telaListaQuizz li:nth-child(5n) {
+.telaListaQuizz li:nth-child(4n) {
     margin-right: 0px;
 }
 
@@ -260,9 +260,10 @@ header h1 {
     padding-top: 50px;
 }
  
-.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar, article, .telaJogo h1, .telaFinal h1 {
+.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar {
     width: calc(100vw - 500px);
 }
+
 
 #listaDePerguntas .inputPergunta {
     width: 100%;
@@ -370,6 +371,10 @@ article {
     font-family: 'Merriweather', serif;
 }
 
+article, .telaJogo h1, .telaFinal h1 {
+    width: calc(100vw - 380px);
+}
+
 .telaJogo h2, .telaFinal h2 {
     color: #ffffff;
     font-weight: 700;
@@ -433,9 +438,10 @@ figure img {
     }
 
     article .cabecalhoArticle {
-        padding: 15px;
+        padding: 15px 8px;
         font-size: 20px;
         margin-bottom: 15px;
+        letter-spacing: -1px;
     }
 
     .telaJogo, .telaFinal{

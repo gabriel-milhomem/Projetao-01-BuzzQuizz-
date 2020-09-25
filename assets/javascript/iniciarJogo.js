@@ -1,13 +1,9 @@
 var interfaceJogo;
 var ind = 0;
-var qualNivel = 0;
 var quizz;
-var interfaceFinal;
 var resposta;
 var listaRespostas;
-// var acertos = 0;
-var score;
-// var totalPerguntas;
+var totalPerguntas;
 
 function iniciarJogo(id) {
     interfaceJogo = document.querySelector("#interfaceQuizz");
@@ -36,7 +32,6 @@ function renderizarTelaJogo() {
     }
 
     ind++;
-    console.log(quizz);
 }
 
 function selecionarOpcao(cartaSelecionada) {
@@ -49,20 +44,11 @@ function selecionarOpcao(cartaSelecionada) {
     }
 
     else {
-        //qualNivelEh();
-        setTimeout(iniciarInterfaceFinal, 1000);
+        qualNivelEh();
+        setTimeout(iniciarInterfaceFinal, 2000);
     }
 }
 
-function interarAcerto(selecionada) {
-    if(listaRespostas[selecionada].ehResp === true) {
-        acertos++;
-    }
-}
-
-/*function qualNivelEh() {
-    score = Math.round(acertos / totalPerguntas); 
-}*/
 
 function corNoFundo(carta) {
     for(var j = 0; j < 4; j++) {
@@ -88,34 +74,6 @@ function resetarFundo() {
     }
     
     renderizarTelaJogo();
-}
-
-function iniciarInterfaceFinal() {
-    interfaceFinal = document.querySelector("#interfaceFinal");
-    transicaoDeTela(interfaceJogo, "telaJogo", interfaceFinal, "telaFinal");
-    renderizarTelaFinal();
-}
-
-function renderizarTelaFinal() {
-    var titulo = document.querySelector("#interfaceFinal h1");
-    var tituloNivel = document.querySelector("#interfaceFinal h3");
-    var descricao = document.querySelector("#interfaceFinal p");
-    var listaSpans = document.querySelectorAll("#resultadoQuizz span");
-    var imagem = document.querySelector("#interfaceFinal figure");
-    var totalAcertos = listaSpans[0];
-    var totPergunta = listaSpans[1];
-    var resulScore = listaSpans[2];
-    var niveis = quizz.data.niveis[qualNivel];
-
-    console.log(listaSpans);
-    console.log("Acertos", acertos);
-    // totalAcertos.innerText = acertos;
-    console.log("Perguntas", totalPerguntas);
-    totPergunta.innerText = totalPerguntas;
-    titulo.innerText = quizz.title;
-    imagem.innerHTML = "<img alt='" + niveis.linkNivel + "'/>";
-    tituloNivel.innerText = niveis.tituloNivel;
-    descricao.innerText = niveis.descri;
 }
 
 function comparador() { 

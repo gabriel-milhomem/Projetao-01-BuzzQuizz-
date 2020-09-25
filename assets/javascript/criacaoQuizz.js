@@ -52,7 +52,6 @@ function validarFormulario() {
     espacosInput(todosInputs, textArea);
     naoTemErro = temInputVazio(todosInputs, textArea);
     if(!naoTemErro) {
-        console.log("AAAAAAA");
         return naoTemErro;
     }
 
@@ -111,8 +110,6 @@ function validarInterrogacao(perguntas) {
 
         else {
             if(texto.indexOf("?") !== texto.length - 1) {
-                console.log("aaaaaaaaaaaa");
-
                 var alerta = "Corrija os dados: coloque ' ? ' no fim da pergunta !";
                 renderizarErro(alerta, alertaForm);
                 return false;

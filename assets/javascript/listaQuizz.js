@@ -1,4 +1,5 @@
 var telaCriacao;
+var listaServidor;
 
 function pegarListasServidor() {
     var config = { headers: {"User-Token": token} };
@@ -7,21 +8,22 @@ function pegarListasServidor() {
 }
 
 function renderizarListaQuizz(resposta) {
-    var listaServidor = resposta.data;
+    listaServidor = resposta.data;
     var ul = document.querySelector("#listaDeQuizz");
 
     console.log(listaServidor);
     ul.innerHTML= "";
     for(var i = -1; i < listaServidor.length; i++) {
         var novoLi = document.createElement("li");
-        
+
         if(i == -1) {
             caixaNovoQuizz(novoLi, ul);
             continue;
         }
 
         var titulo = listaServidor[i].title;
-        novoLi.setAttribute("onclick", "iniciarJogo()");
+        var id = listaServidor[i].id;
+        novoLi.setAttribute("onclick", "iniciarJogo(" + id +")");
         novoLi.innerHTML = "<p>" + titulo + "</p>";
         ul.appendChild(novoLi);
     }

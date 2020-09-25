@@ -373,6 +373,7 @@ article {
 .telaJogo h2, .telaFinal h2 {
     color: #ffffff;
     font-weight: 700;
+    text-align: center;
 }
 
 .telaJogo ul, .secaoFeedback {
@@ -416,7 +417,7 @@ figure img {
 
     .telaJogo h1, .telaFinal h1{
         margin-top: 30px;
-        padding: 5px;
+        padding: 10px;
         line-height: 1;
         font-size: 28px;
     }
@@ -454,9 +455,14 @@ figure img {
     line-height: 1.5;
 }
 
-.secaoFeedback img {
+.secaoFeedback figure {
     width: 48%;
     height: 280px;
+}
+
+.secaoFeedback img {
+    width: 100%;
+    height: 100%;
 }
 
 .secaoFeedback h3 {
@@ -472,7 +478,7 @@ figure img {
 }
 
 @media (max-width: 600px) {
-    .secaoFeedback img  {
+    .secaoFeedback figure  {
         width: 100%;
         margin-top: 15px;
     }

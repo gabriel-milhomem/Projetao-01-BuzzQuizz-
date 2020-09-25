@@ -45,11 +45,8 @@ function publicarQuizz() {
 
     if(estaValidado) {
         criarObjetoPost()
-        qntsPerguntas = 0;
-        qntsNiveis = 0;
-        ulNivel.innerHTML= "";
-        ulPergunta.innerHTML= "";
-        resetarInputs();
+
+        resetarFormulario();
         transicaoDeTela(telaCriacao, "telaCriacaoQuizz", listaQuizz, "telaListaQuizz");
     }
     
@@ -235,10 +232,14 @@ function enviarObjetoPost(objeto) {
     requisicao.then(pegarListasServidor);
 }
 
-function resetarInputs() {
+function resetarFormulario() {
     var alertaForm = document.querySelector("#erroForm");
     var todosInputs = document.querySelectorAll("#construirQuizz input");
 
+    qntsPerguntas = 0;
+    qntsNiveis = 0;
+    ulNivel.innerHTML= "";
+    ulPergunta.innerHTML= "";
     alertaForm.innerHTML = "";
     for(var i = 0; i < todosInputs.length; i++) {
         todosInputs[i].value = "";

@@ -42,6 +42,7 @@ function alertasLogin(tipoDeErro) {
 }
 
 function renderizarErro(alerta, ondeColocar) {
+    window.scrollTo(0, 0);
     ondeColocar.innerHTML = "<strong>" + alerta + "</strong>";
 }
 

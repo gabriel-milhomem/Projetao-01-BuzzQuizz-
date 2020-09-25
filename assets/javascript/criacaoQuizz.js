@@ -2,29 +2,42 @@ var ulPergunta;
 var ulNivel;
 var qntsPerguntas = 0;
 var qntsNiveis = 0;
+var scrollPerg = false;
+var scrollNivel = false;
+var alertaForm;
 
 function criarPergunta() {
     var novoLi = document.createElement("li");
     var formLi = document.createElement("form");
     ulPergunta = document.querySelector("#listaDePerguntas");
-
     construirFormLiPergunta(formLi);
     novoLi.appendChild(formLi);
     novoLi.innerHTML += "<button onclick= 'criarPergunta()'> <ion-icon name= 'add-circle'> </ion-icon> </button>";
     ulPergunta.appendChild(novoLi);
     qntsPerguntas++;
+
+    if(scrollPerg === true) {
+        ulPergunta.scrollIntoView({block: "end"});
+    }
+    
+    scrollPerg = true;
 }
 
 function criarNivel() {
     var novoLi = document.createElement("li");
     var formLi = document.createElement("form");
     ulNivel = document.querySelector("#listaDeNiveis");
-
     construirFormLiNivel(formLi);
     novoLi.appendChild(formLi);
     novoLi.innerHTML += "<button onclick= 'criarNivel()'> <ion-icon name= 'add-circle'> </ion-icon> </button>";
     ulNivel.appendChild(novoLi);
     qntsNiveis++;
+
+    if(scrollNivel === true) {
+        ulNivel.scrollIntoView({block: "end"});
+    }
+    
+    scrollNivel = true;
 }
 
 function publicarQuizz() {
@@ -47,10 +60,16 @@ function validarFormulario() {
     var todosInputs = document.querySelectorAll("#construirQuizz input");
     var perguntas = document.querySelectorAll(".inputPergunta");
     var textArea = document.querySelector("textarea");
+    alertaForm = document.querySelector("#erroForm");
     var naoTemErro;
 
     espacosInput(todosInputs, textArea);
     naoTemErro = temInputVazio(todosInputs, textArea);
+    if(!naoTemErro) {
+        return naoTemErro;
+    }
+
+    naoTemErro = verificarNumero(todosInputs);
     if(!naoTemErro) {
         return naoTemErro;
     }
@@ -68,7 +87,6 @@ function espacosInput(todosInputs, textArea) {
 }
 
 function temInputVazio(todosInputs, textArea) {
-    var alertaForm = document.querySelector("#erroForm");
     
     if(textArea.value.length === 0) {
         var alerta = "Preencha todos os campos, por favor !";
@@ -88,6 +106,29 @@ function temInputVazio(todosInputs, textArea) {
 
 }
 
+function verificarNumero(todosInputs) {
+    var naoEhNumero = isNaN(todosInputs[10].value) || isNaN(todosInputs[11].value);
+
+    if(naoEhNumero) {
+        var alerta = "Digite números em max e min";
+        renderizarErro(alerta, alertaForm);
+        return false;
+    }
+
+    else {
+        var naoEstaNoLimite = parseFloat(todosInputs[11].value) < 0 || parseFloat(todosInputs[11].value) > 100;
+        
+        if(naoEstaNoLimite) {
+            var alerta = "Digite números entre 0 e 100";
+            renderizarErro(alerta, alertaForm);
+            return false;
+        }
+    }
+
+
+    return true;
+}
+
 function capitalizeInput(todosInputs, textArea) {
     textArea.value = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1);
 
@@ -98,8 +139,6 @@ function capitalizeInput(todosInputs, textArea) {
 }
 
 function validarInterrogacao(perguntas) {
-    var alertaForm = document.querySelector("#erroForm");
-
     for(var i = 0; i < perguntas.length; i++) {
         var texto = perguntas[i].value
         if(texto.indexOf("?") === -1) {

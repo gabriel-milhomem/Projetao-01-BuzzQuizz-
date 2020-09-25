@@ -4,6 +4,7 @@ var quizz;
 var resposta;
 var listaRespostas;
 var totalPerguntas;
+var ultimaPergunta = false;
 
 function iniciarJogo(id) {
     interfaceJogo = document.querySelector("#interfaceQuizz");
@@ -22,16 +23,14 @@ function renderizarTelaJogo() {
     resposta = document.querySelectorAll("#interfaceQuizz figcaption");
     var imagens = document.querySelectorAll("#interfaceQuizz figure");
     var perguntas = quizz.data.perguntas[ind];
+    
     listaRespostas = perguntas.respostas.sort(comparador);
-
     titulo.innerText = quizz.title;
     textoPergunta.innerHTML = "<span>" + (ind + 1) + ". </span>" + perguntas.titulo;
     for(var j = 0; j < 4; j++) {
         resposta[j].innerHTML = "<p>" + listaRespostas[j].texto + "</p>";
-        imagens[j].innerHTML = "<img alt= '" + listaRespostas[j].link + "'/>";
+        imagens[j].innerHTML = "<img title= '" + listaRespostas[j].link + "'/>";
     }
-
-    ind++;
 }
 
 function selecionarOpcao(cartaSelecionada) {
@@ -39,18 +38,21 @@ function selecionarOpcao(cartaSelecionada) {
     corNoFundo();
     interarAcerto(cartaSelecionada);
     
-    if(ind < totalPerguntas) {
+    if(ind < totalPerguntas - 1) {
         setTimeout(resetarFundo, 2000);
+
     }
 
     else {
         qualNivelEh();
         setTimeout(iniciarInterfaceFinal, 2000);
+        ultimaPergunta = true;
+        setTimeout(resetarFundo, 3000);
     }
 }
 
 
-function corNoFundo(carta) {
+function corNoFundo() {
     for(var j = 0; j < 4; j++) {
         if(listaRespostas[j].ehResp === true) {
             resposta[j].classList.add("fundoVerde");
@@ -63,6 +65,7 @@ function corNoFundo(carta) {
 }
 
 function resetarFundo() {
+
     for(var j = 0; j < 4; j++) {
         if(listaRespostas[j].ehResp === true) {
             resposta[j].classList.remove("fundoVerde");
@@ -73,7 +76,14 @@ function resetarFundo() {
         }
     }
     
-    renderizarTelaJogo();
+    if(!ultimaPergunta) {
+        ind++;
+        renderizarTelaJogo();
+    }
+
+    else {
+        ultimaPergunta = false;
+    }
 }
 
 function comparador() { 

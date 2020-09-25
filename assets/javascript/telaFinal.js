@@ -13,7 +13,7 @@ function qualNivelEh() {
     var listaNivel= quizz.data.niveis;
     score = Math.round((acertos / totalPerguntas) * 100) ;
     for(var i = 0; i < listaNivel.length; i++) {
-        if(score > listaNivel[i].min && score <= listaNivel[i].max) {
+        if(score >= listaNivel[i].min && score <= listaNivel[i].max) {
             qualNivel = i;
         }
     } 
@@ -40,7 +40,13 @@ function renderizarTelaFinal() {
     totalAcertos.innerText = acertos;
     totPergunta.innerText = totalPerguntas;
     titulo.innerText = quizz.title;
-    imagem.innerHTML = "<img alt= '" + niveis.linkNivel + "'/>";
     tituloNivel.innerText = niveis.tituloNivel;
     descricao.innerText = niveis.descri;
+    imagem.innerHTML = "<img title= '" + niveis.linkNivel + "'/>";
+    ind = 0;
+    acertos = 0;
+}
+
+function voltarHome() {
+    sairDaTelaAtualEIrPara(listaQuizz, "telaListaQuizz");
 }

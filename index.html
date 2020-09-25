@@ -5,9 +5,11 @@
         <meta charset= "UTF-8"/>
         <meta name= "viewport" content= "width=width-device, initial-scale=1"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/reset.css"/>
-        <!--<link rel= "stylesheet" type= "text/css" href= "assets/css/telaLogin.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/telaLogin.css"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/listaQuizz.css"/>
-        <link rel= "stylesheet" type= "text/css" href= "assets/css/criacaoQuizz.css"/>-->
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/criacaoQuizz.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/telaJogo.css"/>
+        <link rel= "stylesheet" type= "text/css" href= "assets/css/telaFinal.css"/>
         <link rel= "stylesheet" type= "text/css" href= "assets/css/geral.css"/>
         <link href= "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
         <link href= "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel= "stylesheet"/>
@@ -17,8 +19,14 @@
     <body>
 
         <header>
-            <h1> BuzzQuizz </h1>
-            <img class= "logo" src= "assets/images/logo.jpg" alt= "Logo do BuzzQuizz" title= "BuzzQuizz"/>
+            <button onclick= "voltarHome()"> <h1> BuzzQuizz </h1> </button>
+
+            <nav>
+                <button onclick= "voltarHome()"> <h2> Inicio </h2> </button>
+                <button onclick= "voltarLogin()"> <h2> Sair </h2> </button>
+                <img class= "logo" src= "assets/images/logo.jpg" alt= "Logo do BuzzQuizz" title= "BuzzQuizz"/>
+            </nav>
+            
         </header>
 
         <section id= "telaCadastro" class= "telaLogin">
@@ -99,16 +107,15 @@
                     <h2> Você acertou <span> </span> de <span> </span> perguntas!<br/>Score: <span> </span>% </h2>
                 </div>
 
-                <section class= "secaoFeedback">
+                <div class= "secaoFeedback">
                     <div>
                         <h3> </h3>
                         <p> </p>
                     </div>
 
                     <figure> </figure>
-                </section>
+                </div>
 
-    
             </article>
 
         </section>

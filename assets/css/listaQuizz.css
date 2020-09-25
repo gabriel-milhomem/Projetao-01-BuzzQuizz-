@@ -1,0 +1,72 @@
+.telaListaQuizz, article .cabecalhoArticle {
+    display: flex;
+    justify-content: center;
+}
+
+.telaListaQuizz ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100vw - 380px);
+    margin-top: 70px;
+}
+
+.telaListaQuizz li {
+    width: 182px;
+    height: 200px;
+    padding: 0px 30px 15px 30px;
+    justify-content: center;
+    margin: 0px 20px 20px 0px;
+    border: 1px solid #aaaaaa;
+    box-shadow: 0px 0px 3px rgba(0 , 0, 0, 0.3);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.2;
+    cursor: pointer;
+    background: #f6f6f6;
+}
+
+.telaListaQuizz li:nth-child(4n) {
+    margin-right: 0px;
+}
+
+.telaListaQuizz .adicionarQuizz {
+    padding-top: 15px;
+    justify-content: space-evenly;
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    background:#ffc7c7;
+    border: 1px solid #fe7171;
+    box-shadow: none;
+}
+
+.telaListaQuizz p {
+    letter-spacing: -0.5px;
+    width: 100%;
+    word-break: break-word;
+}
+
+.adicionarQuizz ion-icon {
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+
+    .telaListaQuizz ul {
+        width: calc(100% - 30px);
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .telaListaQuizz li {
+        margin-right: 0px;
+        margin-bottom: 30px;
+        width: 220px;
+        height: 260px;
+    }
+
+    .telaListaQuizz .adicionarQuizz {
+        padding: 30px;
+    }
+}

@@ -1,0 +1,50 @@
+
+.telaLogin h2 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+.erroMensagem {
+    color: #fe7171;
+    display: inline;
+}
+
+.telaLogin hgroup {
+    margin-bottom: 30px;
+    height: 70px;
+    justify-content: space-between;
+}
+
+.telaLogin div {
+    width: 330px;
+    height: 215px;
+    justify-content: space-around;
+    padding: 15px;
+    background: #ffc7c7;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.telaLogin input, #inputTitulo {
+    height: 50px;
+}
+
+.telaLogin button, .botaoPublicar {
+    color: #ffffff;
+    background: #fe7171;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.telaLogin::placeholder, #inputTitulo::placeholder {
+    font-size: 20px;
+}
+
+@media (max-width: 600px) {
+
+    .telaLogin div, .telaLogin hgroup {
+        width: calc(100vw - 30px);
+    }
+}

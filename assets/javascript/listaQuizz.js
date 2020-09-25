@@ -41,5 +41,9 @@ function iniciarCriacaoDeQuizz() {;
     transicaoDeTela(listaQuizz, "telaListaQuizz", telaCriacao, "telaCriacaoQuizz");
     criarPergunta();
     criarNivel();
+<<<<<<< HEAD
     window.scrollTo(0, 0);
+=======
+    window.scrollTo(0,0);
+>>>>>>> master
 }

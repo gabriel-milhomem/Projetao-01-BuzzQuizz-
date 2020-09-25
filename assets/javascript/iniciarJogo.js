@@ -5,6 +5,7 @@ var resposta;
 var listaRespostas;
 var totalPerguntas;
 var ultimaPergunta = false;
+var cliqueCarta = false;
 
 function iniciarJogo(id) {
     interfaceJogo = document.querySelector("#interfaceQuizz");
@@ -29,16 +30,21 @@ function renderizarTelaJogo() {
     textoPergunta.innerHTML = "<span>" + (ind + 1) + ". </span>" + perguntas.titulo;
     for(var j = 0; j < 4; j++) {
         resposta[j].innerHTML = "<p>" + listaRespostas[j].texto + "</p>";
-        imagens[j].innerHTML = "<img title= '" + listaRespostas[j].link + "'/>";
+        imagens[j].innerHTML = "<img src= '" + listaRespostas[j].link + "'/>";
     }
 }
 
 function selecionarOpcao(cartaSelecionada) {
+    if(cliqueCarta === true) {
+        return;
+    }
+
     totalPerguntas = quizz.data.perguntas.length;
     corNoFundo();
     interarAcerto(cartaSelecionada);
     
     if(ind < totalPerguntas - 1) {
+        cliqueCarta = true;
         setTimeout(resetarFundo, 2000);
 
     }
@@ -47,6 +53,7 @@ function selecionarOpcao(cartaSelecionada) {
         qualNivelEh();
         setTimeout(iniciarInterfaceFinal, 2000);
         ultimaPergunta = true;
+        cliqueCarta = true;
         setTimeout(resetarFundo, 3000);
     }
 }
@@ -65,7 +72,6 @@ function corNoFundo() {
 }
 
 function resetarFundo() {
-
     for(var j = 0; j < 4; j++) {
         if(listaRespostas[j].ehResp === true) {
             resposta[j].classList.remove("fundoVerde");
@@ -75,7 +81,7 @@ function resetarFundo() {
             resposta[j].classList.remove("fundoVerm");
         }
     }
-    
+
     if(!ultimaPergunta) {
         ind++;
         renderizarTelaJogo();
@@ -84,6 +90,8 @@ function resetarFundo() {
     else {
         ultimaPergunta = false;
     }
+
+    cliqueCarta = false;
 }
 
 function comparador() { 

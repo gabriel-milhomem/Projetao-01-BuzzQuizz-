@@ -45,6 +45,10 @@ function publicarQuizz() {
 
     if(estaValidado) {
         criarObjetoPost()
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         resetarFormulario();
         transicaoDeTela(telaCriacao, "telaCriacaoQuizz", listaQuizz, "telaListaQuizz");
     }
@@ -103,7 +107,10 @@ function temInputVazio(todosInputs, textArea) {
 }
 
 function verificarNumero(todosInputs) {
-    var naoEhNumero = isNaN(todosInputs[10].value) || isNaN(todosInputs[11].value);
+    var min = document.querySelector("#minimo").value;
+    var max = document.querySelector("#maximo").value;
+
+    var naoEhNumero = isNaN(min) || isNaN(max);
 
     if(naoEhNumero) {
         var alerta = "Digite números em max e min";
@@ -112,7 +119,7 @@ function verificarNumero(todosInputs) {
     }
 
     else {
-        var naoEstaNoLimite = parseFloat(todosInputs[11].value) < 0 || parseFloat(todosInputs[11].value) > 100;
+        var naoEstaNoLimite = parseFloat(min) < 0 || parseFloat(max) > 100;
         
         if(naoEstaNoLimite) {
             var alerta = "Digite números entre 0 e 100";
@@ -234,7 +241,11 @@ function enviarObjetoPost(objeto) {
 function resetarFormulario() {
     var alertaForm = document.querySelector("#erroForm");
     var todosInputs = document.querySelectorAll("#construirQuizz input");
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> master
     qntsPerguntas = 0;
     qntsNiveis = 0;
     ulNivel.innerHTML= "";
@@ -261,8 +272,8 @@ function construirFormLiPergunta(formLi) {
 
 function construirFormLiNivel(formLi){
     formLi.innerHTML =  " <h2> Nivel " + (qntsNiveis + 1) + "</h2>"; 
-    formLi.innerHTML += "<input class= 'larguraMetade' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
-    formLi.innerHTML += "<input class= 'larguraMetade' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
+    formLi.innerHTML += "<input id= 'minimo' class= 'larguraMetade' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
+    formLi.innerHTML += "<input id= 'maximo' class= 'larguraMetade' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Título do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Link da imagem do nível'/>";
     formLi.innerHTML += "<textarea class= 'caixaMaior' cols= '40' rows= '2' placeholder= 'Descrição do nível'></textarea>";

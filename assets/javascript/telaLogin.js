@@ -82,7 +82,11 @@ function sairDaTelaAtualEIrPara(irTela, classeIrTela) {
     var classesDasTelas = ["telaLogin", "telaListaQuizz", "telaCriacaoQuizz", "telaJogo", "telaFinal"];
     for(var i = 0; i < telas.length; i++) {
         if(telas[i].classList.contains("esconderTela") !== true) {
+<<<<<<< HEAD
             if(classesDasTelas[i] === "telaCriacaoQuizz"){
+=======
+            if(classesDasTelas[i] === "telaCriacaoQuizz") {
+>>>>>>> master
                 resetarFormulario();
             }
 

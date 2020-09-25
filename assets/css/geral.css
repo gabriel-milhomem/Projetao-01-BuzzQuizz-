@@ -13,12 +13,12 @@ body {
     background: #f8efd4;
 }
 
-.telaLogin, .telaListaQuizz, .telaCriacaoQuizz, .telaJogo {
+.telaLogin, .telaListaQuizz, .telaCriacaoQuizz, .telaJogo, .telaFinal {
     width: 100%;
     height: calc(100% - 80px);
 }
 
-.telaLogin div, .telaLogin hgroup, .telaListaQuizz li, .telaCriacaoQuizz li, .telaCriacaoQuizz, .telaLogin, .telaJogo{
+.telaLogin div, .telaLogin hgroup, .telaListaQuizz li, .telaCriacaoQuizz li, .telaCriacaoQuizz, .telaLogin, .telaJogo, .telaFinal {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,7 +173,7 @@ header h1 {
 
 /* ---------------------- listaQuizz --------------------- */
 
-.telaListaQuizz, article div {
+.telaListaQuizz, article .cabecalhoArticle {
     display: flex;
     justify-content: center;
     align-items: center; /* verificar */
@@ -260,7 +260,7 @@ header h1 {
     padding-top: 50px;
 }
  
-.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar, article, .telaJogo h1 {
+.telaCriacaoQuizz ul, #inputTitulo, .botaoPublicar, article, .telaJogo h1, .telaFinal h1 {
     width: calc(100vw - 500px);
 }
 
@@ -343,7 +343,7 @@ header h1 {
 
 /* ----------- Tela Jogo ------------ */
 
-.telaJogo h1 {
+.telaJogo h1, .telaFinal h1 {
     border-radius: 15px;
     margin-bottom: 30px;
     background: #ffffff;
@@ -354,9 +354,10 @@ header h1 {
     margin-top: 60px;
     letter-spacing: -1px;
     word-break: break-all;
+    font-size: 32px;
 }
 
-article div {
+article .cabecalhoArticle {
     padding: 40px;
     width: 100%;
     background: #ffc7c7;
@@ -369,12 +370,12 @@ article {
     font-family: 'Merriweather', serif;
 }
 
-.telaJogo h2 {
+.telaJogo h2, .telaFinal h2 {
     color: #ffffff;
     font-weight: 700;
 }
 
-.telaJogo ul {
+.telaJogo ul, .secaoFeedback {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
@@ -409,18 +410,18 @@ figure img {
 }
 
 @media (max-width: 600px) {
-    article, .telaJogo h1, .telaJogo ul, .telaJogo figure, .telaJogo{
+    article, .telaJogo h1, .telaJogo ul, .telaJogo figure, .telaJogo, .telaFinal h1, .telaFinal, .secaoFeedback {
         width: 100%;
     }
 
-    .telaJogo h1 {
+    .telaJogo h1, .telaFinal h1{
         margin-top: 30px;
         padding: 5px;
         line-height: 1;
         font-size: 28px;
     }
 
-    .telaJogo ul {
+    .telaJogo ul, .secaoFeedback {
         display: flex;
         flex-direction: column;
     }
@@ -430,12 +431,54 @@ figure img {
         height: 50px
     }
 
-    article div {
+    article .cabecalhoArticle {
         padding: 15px;
         font-size: 20px;
+        margin-bottom: 15px;
     }
 
-    .telaJogo {
+    .telaJogo, .telaFinal{
         padding: 0px 15px;
+    }
+}
+
+/* ------------------ TELA FINAL ----------- */ 
+
+.secaoFeedback div {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 48%;
+}
+
+.secaoFeedback {
+    line-height: 1.5;
+}
+
+.secaoFeedback img {
+    width: 48%;
+    height: 280px;
+}
+
+.secaoFeedback h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.secaoFeedback p {
+    font-size: 16px;
+    text-align: justify;
+}
+
+@media (max-width: 600px) {
+    .secaoFeedback img  {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .secaoFeedback div {
+        width: 100%;
+        padding: 0px;
     }
 }

@@ -14,7 +14,7 @@ function renderizarListaQuizz(resposta) {
     ul.innerHTML= "";
     for(var i = -1; i < listaServidor.length; i++) {
         var novoLi = document.createElement("li");
-
+        
         if(i == -1) {
             caixaNovoQuizz(novoLi, ul);
             continue;
@@ -26,6 +26,7 @@ function renderizarListaQuizz(resposta) {
         ul.appendChild(novoLi);
     }
 }
+
 function caixaNovoQuizz(li, ul) {
     li.classList.add("adicionarQuizz");
     li.setAttribute("onclick", "iniciarCriacaoDeQuizz()");

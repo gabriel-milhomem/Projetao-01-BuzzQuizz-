@@ -29,7 +29,7 @@ function criarNivel() {
 
 function publicarQuizz() {
     var estaValidado = validarFormulario();
-    console.log(estaValidado);
+
     if(estaValidado) {
         criarObjetoPost()
         qntsPerguntas = 0;
@@ -51,7 +51,6 @@ function validarFormulario() {
 
     espacosInput(todosInputs, textArea);
     naoTemErro = temInputVazio(todosInputs, textArea);
-
     if(!naoTemErro) {
         console.log("AAAAAAA");
         return naoTemErro;
@@ -59,7 +58,6 @@ function validarFormulario() {
 
     capitalizeInput(todosInputs, textArea);
     naoTemErro = validarInterrogacao(perguntas);
-
     return naoTemErro;
 }
 
@@ -112,9 +110,6 @@ function validarInterrogacao(perguntas) {
         }
 
         else {
-            
-            console.log(texto.indexOf("?"));
-            
             if(texto.indexOf("?") !== texto.length - 1) {
                 console.log("aaaaaaaaaaaa");
 
@@ -144,8 +139,6 @@ function criarObjetoPost() {
     
     objeto = criarObjetoNiveis(objeto, formNivel);
     objeto = criarObjetoPerguntas(objeto, formPergunta);
-
-    console.log(objeto);
     enviarObjetoPost(objeto);
 }
 
@@ -153,6 +146,7 @@ function criarObjetoNiveis(objeto, formNivel) {
     for(var i = 0; i < qntsNiveis; i++) {
         var inputNivel = formNivel[i].querySelectorAll("input");
         var descricao = formNivel[i].querySelector("textarea");
+
         objeto.data.niveis[i] = {
             min: inputNivel[0].value,
             max: inputNivel[1].value,
@@ -169,6 +163,7 @@ function criarObjetoPerguntas(objeto, formPergunta) {
     for(var i = 0; i < qntsPerguntas; i++) {
         var k = 0;
         var inputPergunta = formPergunta[i].querySelectorAll("input");
+
         objeto.data.perguntas[i] = {titulo: inputPergunta[k].value, respostas: []};
         k++;
         for(var j = 0; j < 4; j++) {
@@ -178,6 +173,7 @@ function criarObjetoPerguntas(objeto, formPergunta) {
                     link: inputPergunta[k+1].value,
                     ehResp: true
                 };
+
                 k += 2;
             }
 
@@ -187,6 +183,7 @@ function criarObjetoPerguntas(objeto, formPergunta) {
                     link: inputPergunta[k+1].value,
                     ehResp: false
                 };
+
                 k += 2;
             }
         }
@@ -198,13 +195,15 @@ function criarObjetoPerguntas(objeto, formPergunta) {
 function enviarObjetoPost(objeto) {
     var config = {headers: {"User-Token": token} };
     var requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", objeto, config);
+    
     requisicao.then(pegarListasServidor);
 }
 
 function resetarInputs() {
     var alertaForm = document.querySelector("#erroForm");
-    alertaForm.innerHTML = "";
     var todosInputs = document.querySelectorAll("#construirQuizz input");
+
+    alertaForm.innerHTML = "";
     for(var i = 0; i < todosInputs.length; i++) {
         todosInputs[i].value = "";
     }

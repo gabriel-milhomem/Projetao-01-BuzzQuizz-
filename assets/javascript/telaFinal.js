@@ -42,7 +42,7 @@ function renderizarTelaFinal() {
     titulo.innerText = quizz.title;
     tituloNivel.innerText = niveis.tituloNivel;
     descricao.innerText = niveis.descri;
-    imagem.innerHTML = "<img title= '" + niveis.linkNivel + "'/>";
+    imagem.innerHTML = "<img src= '" + niveis.linkNivel + "'/>";
     ind = 0;
     acertos = 0;
 }

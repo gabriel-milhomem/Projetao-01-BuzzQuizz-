@@ -30,7 +30,7 @@ function renderizarTelaJogo() {
     textoPergunta.innerHTML = "<span>" + (ind + 1) + ". </span>" + perguntas.titulo;
     for(var j = 0; j < 4; j++) {
         resposta[j].innerHTML = "<p>" + listaRespostas[j].texto + "</p>";
-        imagens[j].innerHTML = "<img title= '" + listaRespostas[j].link + "'/>";
+        imagens[j].innerHTML = "<img src= '" + listaRespostas[j].link + "'/>";
     }
 }
 

@@ -11,7 +11,7 @@ function entrarSite() {
     emailUsuario = document.querySelector("#inputEmail");
     senhaUsuario = document.querySelector("#inputSenha");
     var cadastro = {email: emailUsuario.value, password: senhaUsuario.value};
-    var campoEmBranco = emailUsuario === "" || senhaUsuario === "";
+    var campoEmBranco = emailUsuario.value === "" || senhaUsuario.value === "";
     var reqLogin;
 
     if(campoEmBranco) {
@@ -20,7 +20,8 @@ function entrarSite() {
     
     else {
         botaoEnviar.disabled = true;
-        reqLogin = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/users", cadastro);
+        var urlPostUsuario = "https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/users";
+        reqLogin = axios.post(urlPostUsuario, cadastro);
         reqLogin.then(iniciarListagemQuizz).catch(emailSenhaIncorreto);
 
     }

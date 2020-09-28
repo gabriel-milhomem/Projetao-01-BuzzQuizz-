@@ -1,9 +1,12 @@
 var telaCriacao;
 var listaServidor;
+var liParaExcluir;
+var config;
 
 function pegarListasServidor() {
-    var config = { headers: {"User-Token": token} };
-    var requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", config);
+    config = { headers: {"User-Token": token} };
+    var urlGetQuizz = "https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes";
+    var requisicao = axios.get(urlGetQuizz, config);
     requisicao.then(renderizarListaQuizz);
 }
 
@@ -24,6 +27,7 @@ function renderizarListaQuizz(resposta) {
         var id = listaServidor[i].id;
         novoLi.setAttribute("onclick", "iniciarJogo(" + id +")");
         novoLi.innerHTML = "<p>" + titulo + "</p>";
+        novoLi.innerHTML += "<button onclick= 'deletarQuizz(" + id + ", this.parentNode)' class= 'iconeDeletar'> <ion-icon name= 'close-circle-outline'> </ion-icon> </button>";
         ul.appendChild(novoLi);
     }
 }
@@ -42,4 +46,15 @@ function iniciarCriacaoDeQuizz() {;
     criarPergunta();
     criarNivel();
     window.scrollTo(0,0);
+}
+
+function deletarQuizz(id, li) {
+    liParaExcluir = li;
+    var urlDeletarQuizz = "https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes/" + id;
+    var reqDeletar = axios.delete(urlDeletarQuizz, config);
+    reqDeletar.then(excluirQuizzTela);
+}
+
+function excluirQuizzTela() {
+    liParaExcluir.remove();
 }

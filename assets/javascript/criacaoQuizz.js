@@ -49,115 +49,6 @@ function publicarQuizz() {
         resetarFormulario();
         transicaoDeTela(telaCriacao, "telaCriacaoQuizz", listaQuizz, "telaListaQuizz");
     }
-    
-
-}
-
-function validarFormulario() {
-    var todosInputs = document.querySelectorAll("#construirQuizz input");
-    var perguntas = document.querySelectorAll(".inputPergunta");
-    var textArea = document.querySelector("textarea");
-    alertaForm = document.querySelector("#erroForm");
-    var naoTemErro;
-
-    espacosInput(todosInputs, textArea);
-    naoTemErro = temInputVazio(todosInputs, textArea);
-    if(!naoTemErro) {
-        return naoTemErro;
-    }
-
-    naoTemErro = verificarNumero(todosInputs);
-    if(!naoTemErro) {
-        return naoTemErro;
-    }
-
-    capitalizeInput(todosInputs, textArea);
-    naoTemErro = validarInterrogacao(perguntas);
-    return naoTemErro;
-}
-
-function espacosInput(todosInputs, textArea) {
-    for(var i = 0; i < todosInputs.length; i++) {
-        todosInputs[i].value = todosInputs[i].value.trim()
-        textArea.value = textArea.value.trim();
-    }
-}
-
-function temInputVazio(todosInputs, textArea) {
-    
-    if(textArea.value.length === 0) {
-        var alerta = "Preencha todos os campos, por favor !";
-        renderizarErro(alerta, alertaForm);
-        return false;
-    }
-
-    for(var i = 0; i < todosInputs.length; i++) {
-        if(todosInputs[i].value.length === 0) {
-            var alerta = "Preencha todos os campos, por favor !";
-            renderizarErro(alerta, alertaForm);
-            return false;
-        }
-    }
-
-    return true;
-
-}
-
-function verificarNumero(todosInputs) {
-    var min = document.querySelector("#minimo").value;
-    var max = document.querySelector("#maximo").value;
-
-    var naoEhNumero = isNaN(min) || isNaN(max);
-
-    if(naoEhNumero) {
-        var alerta = "Digite números em max e min";
-        renderizarErro(alerta, alertaForm);
-        return false;
-    }
-
-    else {
-        var naoEstaNoLimite = parseFloat(min) < 0 || parseFloat(max) > 100;
-        
-        if(naoEstaNoLimite) {
-            var alerta = "Digite números entre 0 e 100";
-            renderizarErro(alerta, alertaForm);
-            return false;
-        }
-    }
-
-
-    return true;
-}
-
-function capitalizeInput(todosInputs, textArea) {
-    textArea.value = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1);
-
-    for(var i = 0; i < todosInputs.length; i++) {
-        var texto = todosInputs[i].value;
-        todosInputs[i].value = texto.charAt(0).toUpperCase() + texto.slice(1);
-    }
-}
-
-function validarInterrogacao(perguntas) {
-    for(var i = 0; i < perguntas.length; i++) {
-        var texto = perguntas[i].value
-        if(texto.indexOf("?") === -1) {
-            var alerta = "Corrija os dados: coloque '?' na pergunta !";
-            renderizarErro(alerta, alertaForm);
-            return false;
-        }
-
-        else {
-            if(texto.indexOf("?") !== texto.length - 1) {
-                var alerta = "Corrija os dados: coloque ' ? ' no fim da pergunta !";
-                renderizarErro(alerta, alertaForm);
-                return false;
-            }
-        }
-
-    }
-
-    return true;
 }
 
 function criarObjetoPost() {
@@ -229,8 +120,8 @@ function criarObjetoPerguntas(objeto, formPergunta) {
 }
 
 function enviarObjetoPost(objeto) {
-    var config = {headers: {"User-Token": token} };
-    var requisicao = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes", objeto, config);
+    var urlPostQuizz = "https://mock-api.bootcamp.respondeai.com.br/api/v1/buzzquizz/quizzes";
+    var requisicao = axios.post(urlPostQuizz, objeto, config);
     
     requisicao.then(pegarListasServidor);
 }
@@ -265,8 +156,8 @@ function construirFormLiPergunta(formLi) {
 
 function construirFormLiNivel(formLi){
     formLi.innerHTML =  " <h2> Nivel " + (qntsNiveis + 1) + "</h2>"; 
-    formLi.innerHTML += "<input id= 'minimo' class= 'larguraMetade' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
-    formLi.innerHTML += "<input id= 'maximo' class= 'larguraMetade' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
+    formLi.innerHTML += "<input class= 'larguraMetade minimo' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
+    formLi.innerHTML += "<input class= 'larguraMetade maximo' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Título do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Link da imagem do nível'/>";
     formLi.innerHTML += "<textarea class= 'caixaMaior' cols= '40' rows= '2' placeholder= 'Descrição do nível'></textarea>";

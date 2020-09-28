@@ -24,6 +24,19 @@
     line-height: 1.2;
     cursor: pointer;
     background: #f6f6f6;
+    position: relative;
+}
+
+.iconeDeletar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #ffc7c7;
+    z-index: 2;
+}
+
+.iconeDeletar ion-icon {
+    font-size: 32px;
 }
 
 .telaListaQuizz li:nth-child(5n) {

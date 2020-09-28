@@ -74,7 +74,7 @@
         height: auto;
     }
 
-    .telaCriacaoQuizz ul {
+    .telaCriacaoQuizz ul,  {
         margin-bottom: 40px;
     }
 
@@ -82,7 +82,7 @@
         padding-top: 30px;
     }
 
-    .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea {
+    .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea, .botaoPublicar {
         margin-bottom: 10px;
     }
     

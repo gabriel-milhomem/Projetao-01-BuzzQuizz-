@@ -1,12 +1,20 @@
 function validarFormulario() {
-    var todosInputs = document.querySelectorAll("#construirQuizz input");
+    var todosInputs = document.querySelectorAll("#construirQuizz input, textarea");
     var perguntas = document.querySelectorAll(".inputPergunta");
-    var textArea = document.querySelector("textarea");
+    var todasImagens = document.querySelectorAll(".imagemForm");
     alertaForm = document.querySelector("#erroForm");
     var naoTemErro;
 
-    espacosInput(todosInputs, textArea);
-    naoTemErro = temInputVazio(todosInputs, textArea);
+    espacosInput(todosInputs);
+
+    naoTemErro = temInputVazio(todosInputs);
+    if(!naoTemErro) {
+        return naoTemErro;
+    }
+
+    capitalizeInput(todosInputs);
+
+    naoTemErro = validarLink(todasImagens);
     if(!naoTemErro) {
         return naoTemErro;
     }
@@ -16,26 +24,17 @@ function validarFormulario() {
         return naoTemErro;
     }
 
-    capitalizeInput(todosInputs, textArea);
     naoTemErro = validarInterrogacao(perguntas);
     return naoTemErro;
 }
 
-function espacosInput(todosInputs, textArea) {
+function espacosInput(todosInputs) {
     for(var i = 0; i < todosInputs.length; i++) {
-        todosInputs[i].value = todosInputs[i].value.trim()
-        textArea.value = textArea.value.trim();
+        todosInputs[i].value = todosInputs[i].value.trim();
     }
 }
 
-function temInputVazio(todosInputs, textArea) {
-    
-    if(textArea.value.length === 0) {
-        var alerta = "Preencha todos os campos, por favor !";
-        renderizarErro(alerta, alertaForm);
-        return false;
-    }
-
+function temInputVazio(todosInputs) {
     for(var i = 0; i < todosInputs.length; i++) {
         if(todosInputs[i].value.length === 0) {
             var alerta = "Preencha todos os campos, por favor !";
@@ -45,7 +44,31 @@ function temInputVazio(todosInputs, textArea) {
     }
 
     return true;
+}
 
+function capitalizeInput(todosInputs) {
+    for(var i = 0; i < todosInputs.length; i++) {
+        if(todosInputs[i].classList.contains("imagemForm")) {
+            continue;
+        }
+
+        var texto = todosInputs[i].value;
+        todosInputs[i].value = texto.charAt(0).toUpperCase() + texto.slice(1);
+    }
+}
+
+function validarLink(todasImagens) {
+    console.log(todasImagens);
+    for(var i = 0; i < todasImagens.length; i++) {
+        var link = todasImagens[i].value.toLowerCase();
+        if(link.slice(0,8) !== "https://") {
+            var alerta = "Utilize um link de imagem válido";
+            renderizarErro(alerta, alertaForm);
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function verificarNumero() {
@@ -83,15 +106,6 @@ function verificarNumero() {
     }
    
     return true;
-}
-
-function capitalizeInput(todosInputs, textArea) {
-    textArea.value = textArea.value.charAt(0).toUpperCase() + textArea.value.slice(1);
-
-    for(var i = 0; i < todosInputs.length; i++) {
-        var texto = todosInputs[i].value;
-        todosInputs[i].value = texto.charAt(0).toUpperCase() + texto.slice(1);
-    }
 }
 
 function validarInterrogacao(perguntas) {

@@ -13,12 +13,15 @@
     width: calc(100vw - 500px);
 }
 
+.botaoPublicar {
+    margin-bottom: 30px;
+}
 
 #listaDePerguntas .inputPergunta {
     width: 100%;
 }
 
-.telaCriacaoQuizz ul, .botaoPublicar{
+.telaCriacaoQuizz ul {
     margin-bottom: 60px;
 }
 
@@ -82,7 +85,7 @@
         padding-top: 30px;
     }
 
-    .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea, .botaoPublicar {
+    .telaCriacaoQuizz h2, .telaCriacaoQuizz input, textarea {
         margin-bottom: 10px;
     }
     

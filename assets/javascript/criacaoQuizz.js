@@ -145,13 +145,13 @@ function construirFormLiPergunta(formLi) {
     formLi.innerHTML =  "<h2> Pergunta " + (qntsPerguntas + 1)  + "</h2>"; 
     formLi.innerHTML += "<input class= 'inputPergunta' type= 'text' placeholder= 'Digite a pergunta' maxlength= '100'/>";
     formLi.innerHTML += "<input class= 'fundoVerde' type= 'text' placeholder= 'Digite a resposta correta'/>";
-    formLi.innerHTML += "<input class= 'fundoVerde' type= 'text' placeholder= 'Link para imagem correta'/>";
+    formLi.innerHTML += "<input class= 'fundoVerde imagemForm' type= 'text' placeholder= 'Link para imagem correta'/>";
     formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Digite uma resposta errada 1'/>";
-    formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Link para imagem errada 1'/>";
+    formLi.innerHTML += "<input class= 'fundoVerm imagemForm' type= 'text' placeholder= 'Link para imagem errada 1'/>";
     formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Digite uma resposta errada 2'/>";
-    formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Link para imagem errada 2'/>";
+    formLi.innerHTML += "<input class= 'fundoVerm imagemForm' type= 'text' placeholder= 'Link para imagem errada 2'/>";
     formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Digite uma resposta errada 3'/>";
-    formLi.innerHTML += "<input class= 'fundoVerm' type= 'text' placeholder= 'Link para imagem errada 3'/>";
+    formLi.innerHTML += "<input class= 'fundoVerm imagemForm' type= 'text' placeholder= 'Link para imagem errada 3'/>";
 }
 
 function construirFormLiNivel(formLi){
@@ -159,6 +159,6 @@ function construirFormLiNivel(formLi){
     formLi.innerHTML += "<input class= 'larguraMetade minimo' type= 'text' placeholder= '% Mínima de acerto do nível'/>";
     formLi.innerHTML += "<input class= 'larguraMetade maximo' type= 'text' placeholder= '% Máxima de acerto do nível'/>";
     formLi.innerHTML += "<input type= 'text' placeholder= 'Título do nível'/>";
-    formLi.innerHTML += "<input type= 'text' placeholder= 'Link da imagem do nível'/>";
+    formLi.innerHTML += "<input class= 'imagemForm' type= 'text' placeholder= 'Link da imagem do nível'/>";
     formLi.innerHTML += "<textarea class= 'caixaMaior' cols= '40' rows= '2' placeholder= 'Descrição do nível'></textarea>";
 }

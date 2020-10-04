@@ -25,8 +25,7 @@ function renderizarListaQuizz(resposta) {
 
         var titulo = listaServidor[i].title;
         var id = listaServidor[i].id;
-        novoLi.setAttribute("onclick", "iniciarJogo(" + id +")");
-        novoLi.innerHTML = "<p>" + titulo + "</p>";
+        novoLi.innerHTML = "<div onclick= 'iniciarJogo(" + id + ")' class= 'corpoCarta'> <p>" + titulo + "</p> </div>";
         novoLi.innerHTML += "<button onclick= 'deletarQuizz(" + id + ", this.parentNode)' class= 'iconeDeletar'> <ion-icon name= 'close-circle-outline'> </ion-icon> </button>";
         ul.appendChild(novoLi);
     }

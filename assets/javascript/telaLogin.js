@@ -75,6 +75,7 @@ function resetarTelaLogin() {
 
 function voltarLogin() {
     sairDaTelaAtualEIrPara(telaLogin, "telaLogin");
+    transicaoOpacidade("interfaceFinal");
     cabecalho.classList.remove("aparecerHeader");
 }
 
@@ -85,6 +86,10 @@ function sairDaTelaAtualEIrPara(irTela, classeIrTela) {
         if(telas[i].classList.contains("esconderTela") !== true) {
             if(classesDasTelas[i] === "telaCriacaoQuizz") {
                 resetarFormulario();
+            }
+
+            if(classesDasTelas[i] === "telaJogo") {
+                transicaoOpacidade("interfaceQuizz");
             }
 
             transicaoDeTela(telas[i], classesDasTelas[i] , irTela, classeIrTela);

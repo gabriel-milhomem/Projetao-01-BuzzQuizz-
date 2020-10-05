@@ -8,6 +8,11 @@
     line-height: 1.5;
 }
 
+.telaFinal {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
 .secaoFeedback figure {
     width: 48%;
     height: 280px;

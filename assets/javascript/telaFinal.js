@@ -21,7 +21,13 @@ function qualNivelEh() {
 
 function iniciarInterfaceFinal() {
     interfaceFinal = document.querySelector("#interfaceFinal");
-    transicaoDeTela(interfaceJogo, "telaJogo", interfaceFinal, "telaFinal");
+    transicaoOpacidade("interfaceQuizz");
+    setTimeout(function() { 
+        transicaoDeTela(interfaceJogo, "telaJogo", interfaceFinal, "telaFinal");
+        setTimeout(function() {
+            transicaoOpacidade("interfaceFinal");
+        }, 1000);
+    }, 1000);
     renderizarTelaFinal();
 }
 
@@ -49,4 +55,5 @@ function renderizarTelaFinal() {
 
 function voltarHome() {
     sairDaTelaAtualEIrPara(listaQuizz, "telaListaQuizz");
+    transicaoOpacidade("interfaceFinal");
 }
